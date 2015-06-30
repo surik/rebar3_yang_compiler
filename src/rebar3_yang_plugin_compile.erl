@@ -4,9 +4,8 @@
 -export([init/1, do/1, format_error/1]).
 
 -define(PROVIDER, compile).
--define(DEPS, [{default, compile}]).
+-define(DEPS, [{default, app_discovery}]).
 
--include_lib("providers/include/providers.hrl").
 -include("rebar3_yang_plugin.hrl").
 
 %% ===================================================================

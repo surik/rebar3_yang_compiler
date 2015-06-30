@@ -6,7 +6,6 @@
 -define(PROVIDER, clean).
 -define(DEPS, [{default, app_discovery}]).
 
--include_lib("providers/include/providers.hrl").
 -include("rebar3_yang_plugin.hrl").
 
 %% ===================================================================

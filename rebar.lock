@@ -1,9 +1,4 @@
-[{<<"getopt">>,{pkg,<<"getopt">>,<<"0.8.2">>},0},
- {<<"yang">>,
+[{<<"yang">>,
   {git,"https://github.com/surik/yang.git",
        {ref,"10530e3678ff84f899f1fb8a6a889ec4e3980f29"}},
-  0},
- {<<"providers">>,
-  {git,"https://github.com/tsloughter/providers.git",
-       {ref,"d5cdd100d33ebe99a207b52dabda828d36aed45e"}},
   0}].

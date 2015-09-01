@@ -28,7 +28,7 @@ init(State) ->
 do(State) ->
     Opts = proplists:unfold(rebar_state:get(State, yang_opts, [])),
     YangBuildDir = proplists:get_value(yang_build_dir, Opts, ?YANGBUILDDIR),
-    rebar_file_utils:delete_each(filelib:wildcard(filename:join([YangBuildDir, "*.hrl"]))).
+    {rebar_file_utils:delete_each(filelib:wildcard(filename:join([YangBuildDir, "*.hrl"]))), State}.
 
 
 -spec format_error(any()) -> iolist().

@@ -1,9 +1,13 @@
 {application, rebar3_yang_plugin,
- [{description, "A rebar plugin"},
+ [{description, "A rebar plugin for yang"},
   {vsn, "0.1.0"},
   {registered, []},
   {applications,
    [kernel, stdlib, yang]},
   {env,[]},
-  {modules, [rebar3_yang_plugin]}
+  {modules, [rebar3_yang_plugin]},
+
+  {contributors, ["Yury Gargay"]},
+  {licenses, ["APL 2.0"]},
+  {links, [{"Github", "https://github.com/surik/rebar3_yang_plugin"}]}
  ]}.

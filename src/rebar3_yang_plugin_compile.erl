@@ -31,7 +31,7 @@ do(State) ->
     YangDir = proplists:get_value(yang_dir, Opts, ?YANGDIR),
     YangBuildDir = proplists:get_value(yang_build_dir, Opts, ?YANGBUILDDIR),
     NewConfig = rebar_state:set(State, erl_opts, 
-                                 [{i, YangBuildDir}] ++ rebar_utils:erl_opts(State)),
+                                 [{i, YangBuildDir}] ++ rebar_opts:erl_opts(State)),
     rebar_base_compiler:run(NewConfig, filelib:wildcard(filename:join([YangDir, "*.yang"])),
                             YangDir, ".yang", YangBuildDir, ".hrl", fun compile_yang/3),
     {ok, State}.

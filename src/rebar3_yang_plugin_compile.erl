@@ -4,7 +4,7 @@
 -export([init/1, do/1, format_error/1]).
 
 -define(PROVIDER, compile).
--define(DEPS, [{default, app_discovery}]).
+-define(DEPS, [{default, app_discovery}, {default, compile}]).
 
 -include("rebar3_yang_plugin.hrl").
 
@@ -27,6 +27,9 @@ init(State) ->
 -spec do(rebar_state:t()) -> {ok, rebar_state:t()} | {error, string()}.
 do(State) ->
     rebar_api:info("Running yang...", []),
+
+    rebar_utils:update_code(rebar_state:code_paths(State, all_deps), [soft_purge]),
+
     Opts = proplists:unfold(rebar_state:get(State, yang_opts, [])),
     YangDir = proplists:get_value(yang_dir, Opts, ?YANGDIR),
     YangBuildDir = proplists:get_value(yang_build_dir, Opts, ?YANGBUILDDIR),
@@ -35,7 +38,6 @@ do(State) ->
     rebar_base_compiler:run(NewConfig, filelib:wildcard(filename:join([YangDir, "*.yang"])),
                             YangDir, ".yang", YangBuildDir, ".hrl", fun compile_yang/3),
     {ok, State}.
-
 
 -spec format_error(any()) -> iolist().
 format_error(Reason) ->
